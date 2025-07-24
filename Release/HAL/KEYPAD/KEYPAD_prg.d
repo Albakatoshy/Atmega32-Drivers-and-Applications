@@ -1,0 +1,18 @@
+HAL/KEYPAD/KEYPAD_prg.o HAL/KEYPAD/KEYPAD_prg.o:  \
+ ../HAL/KEYPAD/KEYPAD_prg.c ../HAL/KEYPAD/KEYPAD_int.h \
+  ../HAL/KEYPAD/../../LIB/STD_TYPES.h ../HAL/KEYPAD/../../LIB/BIT_MATH.h \
+  ../HAL/KEYPAD/../../MCAL/DIO/DIO_int.h \
+  ../HAL/KEYPAD/../../MCAL/DIO/../../LIB/STD_TYPES.h \
+  ../HAL/KEYPAD/KEYPAD_cfg.h
+
+../HAL/KEYPAD/KEYPAD_int.h:
+
+../HAL/KEYPAD/../../LIB/STD_TYPES.h:
+
+../HAL/KEYPAD/../../LIB/BIT_MATH.h:
+
+../HAL/KEYPAD/../../MCAL/DIO/DIO_int.h:
+
+../HAL/KEYPAD/../../MCAL/DIO/../../LIB/STD_TYPES.h:
+
+../HAL/KEYPAD/KEYPAD_cfg.h:

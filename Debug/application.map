@@ -1,0 +1,398 @@
+Archive member included because of file (symbol)
+
+d:/iti/tools/imt tools/sdk/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_exit.o)
+                              d:/iti/tools/imt tools/sdk/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5/crtm32.o (exit)
+d:/iti/tools/imt tools/sdk/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_copy_data.o)
+                              ./HAL/SEVEN_SEG/SEVEN_SEG_prg.o (__do_copy_data)
+
+Memory Configuration
+
+Name             Origin             Length             Attributes
+text             0x00000000         0x00020000         xr
+data             0x00800060         0x0000ffa0         rw !x
+eeprom           0x00810000         0x00010000         rw !x
+fuse             0x00820000         0x00000400         rw !x
+lock             0x00830000         0x00000400         rw !x
+signature        0x00840000         0x00000400         rw !x
+*default*        0x00000000         0xffffffff
+
+Linker script and memory map
+
+LOAD d:/iti/tools/imt tools/sdk/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5/crtm32.o
+LOAD ./MCAL/DIO/DIO_prg.o
+LOAD ./HAL/SEVEN_SEG/SEVEN_SEG_prg.o
+LOAD ./HAL/LCD/LCD_cfg.o
+LOAD ./HAL/LCD/LCD_prg.o
+LOAD ./main.o
+LOAD d:/iti/tools/imt tools/sdk/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a
+LOAD d:/iti/tools/imt tools/sdk/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5\libc.a
+LOAD d:/iti/tools/imt tools/sdk/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a
+
+.hash
+ *(.hash)
+
+.dynsym
+ *(.dynsym)
+
+.dynstr
+ *(.dynstr)
+
+.gnu.version
+ *(.gnu.version)
+
+.gnu.version_d
+ *(.gnu.version_d)
+
+.gnu.version_r
+ *(.gnu.version_r)
+
+.rel.init
+ *(.rel.init)
+
+.rela.init
+ *(.rela.init)
+
+.rel.text
+ *(.rel.text)
+ *(.rel.text.*)
+ *(.rel.gnu.linkonce.t*)
+
+.rela.text
+ *(.rela.text)
+ *(.rela.text.*)
+ *(.rela.gnu.linkonce.t*)
+
+.rel.fini
+ *(.rel.fini)
+
+.rela.fini
+ *(.rela.fini)
+
+.rel.rodata
+ *(.rel.rodata)
+ *(.rel.rodata.*)
+ *(.rel.gnu.linkonce.r*)
+
+.rela.rodata
+ *(.rela.rodata)
+ *(.rela.rodata.*)
+ *(.rela.gnu.linkonce.r*)
+
+.rel.data
+ *(.rel.data)
+ *(.rel.data.*)
+ *(.rel.gnu.linkonce.d*)
+
+.rela.data
+ *(.rela.data)
+ *(.rela.data.*)
+ *(.rela.gnu.linkonce.d*)
+
+.rel.ctors
+ *(.rel.ctors)
+
+.rela.ctors
+ *(.rela.ctors)
+
+.rel.dtors
+ *(.rel.dtors)
+
+.rela.dtors
+ *(.rela.dtors)
+
+.rel.got
+ *(.rel.got)
+
+.rela.got
+ *(.rela.got)
+
+.rel.bss
+ *(.rel.bss)
+
+.rela.bss
+ *(.rela.bss)
+
+.rel.plt
+ *(.rel.plt)
+
+.rela.plt
+ *(.rela.plt)
+
+.text           0x00000000      0x93e
+ *(.vectors)
+ .vectors       0x00000000       0x54 d:/iti/tools/imt tools/sdk/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5/crtm32.o
+                0x00000000                __vectors
+                0x00000000                __vector_default
+ *(.vectors)
+ *(.progmem.gcc*)
+ *(.progmem*)
+                0x00000054                . = ALIGN (0x2)
+                0x00000054                __trampolines_start = .
+ *(.trampolines)
+ .trampolines   0x00000054        0x0 linker stubs
+ *(.trampolines*)
+                0x00000054                __trampolines_end = .
+ *(.jumptables)
+ *(.jumptables*)
+ *(.lowtext)
+ *(.lowtext*)
+                0x00000054                __ctors_start = .
+ *(.ctors)
+                0x00000054                __ctors_end = .
+                0x00000054                __dtors_start = .
+ *(.dtors)
+                0x00000054                __dtors_end = .
+ SORT(*)(.ctors)
+ SORT(*)(.dtors)
+ *(.init0)
+ .init0         0x00000054        0x0 d:/iti/tools/imt tools/sdk/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5/crtm32.o
+                0x00000054                __init
+ *(.init0)
+ *(.init1)
+ *(.init1)
+ *(.init2)
+ .init2         0x00000054        0xc d:/iti/tools/imt tools/sdk/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5/crtm32.o
+ *(.init2)
+ *(.init3)
+ *(.init3)
+ *(.init4)
+ .init4         0x00000060       0x16 d:/iti/tools/imt tools/sdk/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_copy_data.o)
+                0x00000060                __do_copy_data
+ *(.init4)
+ *(.init5)
+ *(.init5)
+ *(.init6)
+ *(.init6)
+ *(.init7)
+ *(.init7)
+ *(.init8)
+ *(.init8)
+ *(.init9)
+ .init9         0x00000076        0x8 d:/iti/tools/imt tools/sdk/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5/crtm32.o
+ *(.init9)
+ *(.text)
+ .text          0x0000007e        0x4 d:/iti/tools/imt tools/sdk/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5/crtm32.o
+                0x0000007e                __vector_1
+                0x0000007e                __vector_12
+                0x0000007e                __bad_interrupt
+                0x0000007e                __vector_6
+                0x0000007e                __vector_3
+                0x0000007e                __vector_11
+                0x0000007e                __vector_13
+                0x0000007e                __vector_17
+                0x0000007e                __vector_19
+                0x0000007e                __vector_7
+                0x0000007e                __vector_5
+                0x0000007e                __vector_4
+                0x0000007e                __vector_9
+                0x0000007e                __vector_2
+                0x0000007e                __vector_15
+                0x0000007e                __vector_8
+                0x0000007e                __vector_14
+                0x0000007e                __vector_10
+                0x0000007e                __vector_16
+                0x0000007e                __vector_18
+                0x0000007e                __vector_20
+ .text          0x00000082        0x0 ./MCAL/DIO/DIO_prg.o
+ .text          0x00000082        0x0 ./HAL/SEVEN_SEG/SEVEN_SEG_prg.o
+ .text          0x00000082        0x0 ./HAL/LCD/LCD_cfg.o
+ .text          0x00000082        0x0 ./HAL/LCD/LCD_prg.o
+ .text          0x00000082        0x0 ./main.o
+ .text          0x00000082        0x0 d:/iti/tools/imt tools/sdk/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_exit.o)
+ .text          0x00000082        0x0 d:/iti/tools/imt tools/sdk/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_copy_data.o)
+                0x00000082                . = ALIGN (0x2)
+ *(.text.*)
+ .text.MDIO_vInit
+                0x00000082       0x56 ./MCAL/DIO/DIO_prg.o
+                0x00000082                MDIO_vInit
+ .text.MDIO_vSetPinDirection
+                0x000000d8      0x200 ./MCAL/DIO/DIO_prg.o
+                0x000000d8                MDIO_vSetPinDirection
+ .text.MDIO_vSetPinValue
+                0x000002d8      0x200 ./MCAL/DIO/DIO_prg.o
+                0x000002d8                MDIO_vSetPinValue
+ .text.MDIO_u8GetPinValue
+                0x000004d8      0x102 ./MCAL/DIO/DIO_prg.o
+                0x000004d8                MDIO_u8GetPinValue
+ .text.DIO_vTogglePin
+                0x000005da       0xfa ./MCAL/DIO/DIO_prg.o
+                0x000005da                DIO_vTogglePin
+ .text.MDIO_vSetPortDirection
+                0x000006d4       0xe8 ./MCAL/DIO/DIO_prg.o
+                0x000006d4                MDIO_vSetPortDirection
+ .text.MDIO_vSetPortValue
+                0x000007bc       0x82 ./MCAL/DIO/DIO_prg.o
+                0x000007bc                MDIO_vSetPortValue
+ .text.MDIO_u8GetPortValue
+                0x0000083e       0x84 ./MCAL/DIO/DIO_prg.o
+                0x0000083e                MDIO_u8GetPortValue
+ .text.HSSD_vInit
+                0x000008c2       0x16 ./HAL/SEVEN_SEG/SEVEN_SEG_prg.o
+                0x000008c2                HSSD_vInit
+ .text.HSSD_DisplayNumber
+                0x000008d8       0x4a ./HAL/SEVEN_SEG/SEVEN_SEG_prg.o
+                0x000008d8                HSSD_DisplayNumber
+ .text.main     0x00000922       0x18 ./main.o
+                0x00000922                main
+ .text.libgcc   0x0000093a        0x0 d:/iti/tools/imt tools/sdk/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_exit.o)
+ .text.libgcc   0x0000093a        0x0 d:/iti/tools/imt tools/sdk/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_copy_data.o)
+                0x0000093a                . = ALIGN (0x2)
+ *(.fini9)
+ .fini9         0x0000093a        0x0 d:/iti/tools/imt tools/sdk/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_exit.o)
+                0x0000093a                exit
+                0x0000093a                _exit
+ *(.fini9)
+ *(.fini8)
+ *(.fini8)
+ *(.fini7)
+ *(.fini7)
+ *(.fini6)
+ *(.fini6)
+ *(.fini5)
+ *(.fini5)
+ *(.fini4)
+ *(.fini4)
+ *(.fini3)
+ *(.fini3)
+ *(.fini2)
+ *(.fini2)
+ *(.fini1)
+ *(.fini1)
+ *(.fini0)
+ .fini0         0x0000093a        0x4 d:/iti/tools/imt tools/sdk/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_exit.o)
+ *(.fini0)
+                0x0000093e                _etext = .
+
+.data           0x00800060        0xa load address 0x0000093e
+                0x00800060                PROVIDE (__data_start, .)
+ *(.data)
+ .data          0x00800060        0x0 d:/iti/tools/imt tools/sdk/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5/crtm32.o
+ .data          0x00800060        0x0 ./MCAL/DIO/DIO_prg.o
+ .data          0x00800060        0x0 ./HAL/SEVEN_SEG/SEVEN_SEG_prg.o
+ .data          0x00800060        0x0 ./HAL/LCD/LCD_cfg.o
+ .data          0x00800060        0x0 ./HAL/LCD/LCD_prg.o
+ .data          0x00800060        0x0 ./main.o
+ .data          0x00800060        0x0 d:/iti/tools/imt tools/sdk/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_exit.o)
+ .data          0x00800060        0x0 d:/iti/tools/imt tools/sdk/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_copy_data.o)
+ *(.data*)
+ .data.seven_seg_commnoc_cathode
+                0x00800060        0xa ./HAL/SEVEN_SEG/SEVEN_SEG_prg.o
+ *(.rodata)
+ *(.rodata*)
+ *(.gnu.linkonce.d*)
+                0x0080006a                . = ALIGN (0x2)
+                0x0080006a                _edata = .
+                0x0080006a                PROVIDE (__data_end, .)
+
+.bss            0x0080006a        0x0
+                0x0080006a                PROVIDE (__bss_start, .)
+ *(.bss)
+ .bss           0x0080006a        0x0 d:/iti/tools/imt tools/sdk/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5/crtm32.o
+ .bss           0x0080006a        0x0 ./MCAL/DIO/DIO_prg.o
+ .bss           0x0080006a        0x0 ./HAL/SEVEN_SEG/SEVEN_SEG_prg.o
+ .bss           0x0080006a        0x0 ./HAL/LCD/LCD_cfg.o
+ .bss           0x0080006a        0x0 ./HAL/LCD/LCD_prg.o
+ .bss           0x0080006a        0x0 ./main.o
+ .bss           0x0080006a        0x0 d:/iti/tools/imt tools/sdk/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_exit.o)
+ .bss           0x0080006a        0x0 d:/iti/tools/imt tools/sdk/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_copy_data.o)
+ *(.bss*)
+ *(COMMON)
+                0x0080006a                PROVIDE (__bss_end, .)
+                0x0000093e                __data_load_start = LOADADDR (.data)
+                0x00000948                __data_load_end = (__data_load_start + SIZEOF (.data))
+
+.noinit         0x0080006a        0x0
+                0x0080006a                PROVIDE (__noinit_start, .)
+ *(.noinit*)
+                0x0080006a                PROVIDE (__noinit_end, .)
+                0x0080006a                _end = .
+                0x0080006a                PROVIDE (__heap_start, .)
+
+.eeprom         0x00810000        0x0
+ *(.eeprom*)
+                0x00810000                __eeprom_end = .
+
+.fuse
+ *(.fuse)
+ *(.lfuse)
+ *(.hfuse)
+ *(.efuse)
+
+.lock
+ *(.lock*)
+
+.signature
+ *(.signature*)
+
+.stab           0x00000000      0xd2c
+ *(.stab)
+ .stab          0x00000000      0x690 ./MCAL/DIO/DIO_prg.o
+ .stab          0x00000690      0x1ec ./HAL/SEVEN_SEG/SEVEN_SEG_prg.o
+                                0x1f8 (size before relaxing)
+ .stab          0x0000087c       0xd8 ./HAL/LCD/LCD_cfg.o
+                                 0xe4 (size before relaxing)
+ .stab          0x00000954       0xd8 ./HAL/LCD/LCD_prg.o
+                                 0xe4 (size before relaxing)
+ .stab          0x00000a2c      0x300 ./main.o
+                                0x378 (size before relaxing)
+
+.stabstr        0x00000000      0x994
+ *(.stabstr)
+ .stabstr       0x00000000      0x994 ./MCAL/DIO/DIO_prg.o
+
+.stab.excl
+ *(.stab.excl)
+
+.stab.exclstr
+ *(.stab.exclstr)
+
+.stab.index
+ *(.stab.index)
+
+.stab.indexstr
+ *(.stab.indexstr)
+
+.comment
+ *(.comment)
+
+.debug
+ *(.debug)
+
+.line
+ *(.line)
+
+.debug_srcinfo
+ *(.debug_srcinfo)
+
+.debug_sfnames
+ *(.debug_sfnames)
+
+.debug_aranges
+ *(.debug_aranges)
+
+.debug_pubnames
+ *(.debug_pubnames)
+
+.debug_info
+ *(.debug_info)
+ *(.gnu.linkonce.wi.*)
+
+.debug_abbrev
+ *(.debug_abbrev)
+
+.debug_line
+ *(.debug_line)
+
+.debug_frame
+ *(.debug_frame)
+
+.debug_str
+ *(.debug_str)
+
+.debug_loc
+ *(.debug_loc)
+
+.debug_macinfo
+ *(.debug_macinfo)
+OUTPUT(application.elf elf32-avr)
+LOAD linker stubs
