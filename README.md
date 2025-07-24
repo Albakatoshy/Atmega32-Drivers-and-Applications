@@ -7,36 +7,6 @@ This repository contains a collection of **bare-metal drivers** and example **ap
 ## 📂 Repository Structure
 
 # Atmega32-Drivers-and-Applications
-Atmega32-Drivers-and-Applications/
-│
-├── MCAL/ # Microcontroller Abstraction Layer
-│ ├── DIO/ # Digital I/O driver
-│ ├── ADC/ # Analog-to-Digital Converter driver
-│ ├── TIMER/ # Timer0/1/2 drivers
-│ ├── UART/ # UART communication driver
-│ ├── SPI/ # SPI protocol driver
-│ ├── I2C/ # I2C protocol driver
-│ └── ... # Other core MCAL modules
-│
-├── HAL/ # Hardware Abstraction Layer
-│ ├── LCD/ # Character LCD driver
-│ ├── KEYPAD/ # Matrix keypad driver
-│ ├── SEVEN_SEG/ # 7-segment display driver
-│ ├── STEPPER/ # Stepper motor control
-│ └── ... # Additional components
-│
-├── APP/ # Application examples
-│ ├── Calculator/
-│ ├── LCD_Keypad_Demo/
-│ └── ...
-│
-├── LIB/ # Shared utility macros and typedefs
-│ ├── BIT_MATH.h
-│ └── STD_TYPES.h
-│
-└── README.md # This file
-
-
 ---
 
 ## ⚙️ Features
