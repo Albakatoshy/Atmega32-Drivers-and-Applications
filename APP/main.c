@@ -1,6 +1,6 @@
 #include "../MCAL/DIO/DIO_int.h"
 #include "../MCAL/EXT_INTERRUPT/EXT_INT_int.h"
-#include "../MCAL/EXT_INTERRUPT/GENERAL_INT_int.h"
+#include "../MCAL/GL_INTERRUPT/GLOBAL_INT_int.h"
 #include "../HAL/SEVEN_SEG/SEVEN_SEG_int.h"
 #include "../HAL/LCD/LCD.int.h"
 #include "../HAL/KEYPAD/KEYPAD_int.h"
@@ -21,9 +21,7 @@ int main() {
 	MDIO_vSetPinDirection(DIO_PORTC_INDEX , DIO_PIN0 , DIO_PIN_DIRECTION_OUTPUT);
 	MDIO_vSetPinDirection(DIO_PORTD_INDEX , DIO_PIN2 , DIO_PIN_DIRECTION_INPUT);
 	MDIO_vSetPinValue(DIO_PORTD_INDEX , DIO_PIN2 , DIO_PIN_HIGH);
-	MINT_vGlobalIntEnableDisable(INT_GLOBAL_INTERRUPT_ENABLE);
-	MEXT_INT_vEnableDisablePrepheral(EXT_INT0 , EXT_INT_ENABLE);
-	MEXT_INT_vIntSenstivity(EXT_INT0 , EXT_INT_RISING_EDGE_SENSTIVITY);
+	MEXTI_vInit();
 	MEXT_INT_InterruptHandler(EXT_INT0 , &ISR_APP);
 
 

@@ -8,8 +8,10 @@ RM := rm -rf
 
 # All of the sources participating in the build are defined here
 -include sources.mk
+-include MCAL/GL_INTERRUPT/subdir.mk
 -include MCAL/EXT_INTERRUPT/subdir.mk
 -include MCAL/DIO/subdir.mk
+-include MCAL/ADC/subdir.mk
 -include HAL/STEPPER/subdir.mk
 -include HAL/SEVEN_SEG/subdir.mk
 -include HAL/LCD/subdir.mk

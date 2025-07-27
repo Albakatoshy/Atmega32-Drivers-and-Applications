@@ -51,9 +51,10 @@ signature        0x00840000         0x00000400         rw !x
 Linker script and memory map
 
 LOAD d:/iti/tools/imt tools/sdk/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5/crtm32.o
+LOAD ./MCAL/GL_INTERRUPT/GLOBAL_INT_prg.o
 LOAD ./MCAL/EXT_INTERRUPT/EXT_INT_prg.o
-LOAD ./MCAL/EXT_INTERRUPT/GENERAL_INT_prg.o
 LOAD ./MCAL/DIO/DIO_prg.o
+LOAD ./MCAL/ADC/ADC_prg.o
 LOAD ./HAL/STEPPER/STEPPER_prg.o
 LOAD ./HAL/SEVEN_SEG/SEVEN_SEG_prg.o
 LOAD ./HAL/LCD/LCD_prg.o
@@ -153,7 +154,7 @@ LOAD d:/iti/tools/imt tools/sdk/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/a
 .rela.plt
  *(.rela.plt)
 
-.text           0x00000000     0x178e
+.text           0x00000000     0x1796
  *(.vectors)
  .vectors       0x00000000       0x54 d:/iti/tools/imt tools/sdk/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5/crtm32.o
                 0x00000000                __vectors
@@ -227,9 +228,10 @@ LOAD d:/iti/tools/imt tools/sdk/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/a
                 0x0000008e                __vector_16
                 0x0000008e                __vector_18
                 0x0000008e                __vector_20
+ .text          0x00000092        0x0 ./MCAL/GL_INTERRUPT/GLOBAL_INT_prg.o
  .text          0x00000092        0x0 ./MCAL/EXT_INTERRUPT/EXT_INT_prg.o
- .text          0x00000092        0x0 ./MCAL/EXT_INTERRUPT/GENERAL_INT_prg.o
  .text          0x00000092        0x0 ./MCAL/DIO/DIO_prg.o
+ .text          0x00000092        0x0 ./MCAL/ADC/ADC_prg.o
  .text          0x00000092        0x0 ./HAL/STEPPER/STEPPER_prg.o
  .text          0x00000092        0x0 ./HAL/SEVEN_SEG/SEVEN_SEG_prg.o
  .text          0x00000092        0x0 ./HAL/LCD/LCD_prg.o
@@ -266,114 +268,117 @@ LOAD d:/iti/tools/imt tools/sdk/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/a
  .text          0x00000b7a        0x0 d:/iti/tools/imt tools/sdk/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_clz.o)
                 0x00000b7a                . = ALIGN (0x2)
  *(.text.*)
- .text.MEXT_INT_vEnableDisablePrepheral
-                0x00000b7a       0x4e ./MCAL/EXT_INTERRUPT/EXT_INT_prg.o
-                0x00000b7a                MEXT_INT_vEnableDisablePrepheral
- .text.MEXT_INT_vIntSenstivity
-                0x00000bc8       0x98 ./MCAL/EXT_INTERRUPT/EXT_INT_prg.o
-                0x00000bc8                MEXT_INT_vIntSenstivity
- .text.MEXT_INT_InterruptHandler
-                0x00000c60       0x44 ./MCAL/EXT_INTERRUPT/EXT_INT_prg.o
-                0x00000c60                MEXT_INT_InterruptHandler
- .text.__vector_1
-                0x00000ca4       0x4e ./MCAL/EXT_INTERRUPT/EXT_INT_prg.o
-                0x00000ca4                __vector_1
- .text.__vector_2
-                0x00000cf2       0x4e ./MCAL/EXT_INTERRUPT/EXT_INT_prg.o
-                0x00000cf2                __vector_2
- .text.__vector_3
-                0x00000d40       0x4e ./MCAL/EXT_INTERRUPT/EXT_INT_prg.o
-                0x00000d40                __vector_3
  .text.MINT_vGlobalIntEnableDisable
-                0x00000d8e       0x18 ./MCAL/EXT_INTERRUPT/GENERAL_INT_prg.o
-                0x00000d8e                MINT_vGlobalIntEnableDisable
+                0x00000b7a       0x18 ./MCAL/GL_INTERRUPT/GLOBAL_INT_prg.o
+                0x00000b7a                MINT_vGlobalIntEnableDisable
+ .text.MEXT_INT_vEnableDisablePrepheral
+                0x00000b92       0x4e ./MCAL/EXT_INTERRUPT/EXT_INT_prg.o
+                0x00000b92                MEXT_INT_vEnableDisablePrepheral
+ .text.MEXT_INT_vIntSenstivity
+                0x00000be0       0x98 ./MCAL/EXT_INTERRUPT/EXT_INT_prg.o
+                0x00000be0                MEXT_INT_vIntSenstivity
+ .text.MEXT_INT_InterruptHandler
+                0x00000c78       0x44 ./MCAL/EXT_INTERRUPT/EXT_INT_prg.o
+                0x00000c78                MEXT_INT_InterruptHandler
+ .text.__vector_1
+                0x00000cbc       0x4e ./MCAL/EXT_INTERRUPT/EXT_INT_prg.o
+                0x00000cbc                __vector_1
+ .text.__vector_2
+                0x00000d0a       0x4e ./MCAL/EXT_INTERRUPT/EXT_INT_prg.o
+                0x00000d0a                __vector_2
+ .text.__vector_3
+                0x00000d58       0x4e ./MCAL/EXT_INTERRUPT/EXT_INT_prg.o
+                0x00000d58                __vector_3
+ .text.MEXTI_vInit
+                0x00000da6       0x1a ./MCAL/EXT_INTERRUPT/EXT_INT_prg.o
+                0x00000da6                MEXTI_vInit
  .text.MDIO_vInit
-                0x00000da6       0x1a ./MCAL/DIO/DIO_prg.o
-                0x00000da6                MDIO_vInit
+                0x00000dc0       0x1a ./MCAL/DIO/DIO_prg.o
+                0x00000dc0                MDIO_vInit
  .text.MDIO_vSetPinDirection
-                0x00000dc0       0xe6 ./MCAL/DIO/DIO_prg.o
-                0x00000dc0                MDIO_vSetPinDirection
+                0x00000dda       0xe6 ./MCAL/DIO/DIO_prg.o
+                0x00000dda                MDIO_vSetPinDirection
  .text.MDIO_vSetPinValue
-                0x00000ea6       0xe6 ./MCAL/DIO/DIO_prg.o
-                0x00000ea6                MDIO_vSetPinValue
+                0x00000ec0       0xe6 ./MCAL/DIO/DIO_prg.o
+                0x00000ec0                MDIO_vSetPinValue
  .text.MDIO_u8GetPinValue
-                0x00000f8c       0x40 ./MCAL/DIO/DIO_prg.o
-                0x00000f8c                MDIO_u8GetPinValue
+                0x00000fa6       0x40 ./MCAL/DIO/DIO_prg.o
+                0x00000fa6                MDIO_u8GetPinValue
  .text.DIO_vTogglePin
-                0x00000fcc       0x6a ./MCAL/DIO/DIO_prg.o
-                0x00000fcc                DIO_vTogglePin
+                0x00000fe6       0x6a ./MCAL/DIO/DIO_prg.o
+                0x00000fe6                DIO_vTogglePin
  .text.MDIO_vSetPortDirection
-                0x00001036       0x4a ./MCAL/DIO/DIO_prg.o
-                0x00001036                MDIO_vSetPortDirection
+                0x00001050       0x4a ./MCAL/DIO/DIO_prg.o
+                0x00001050                MDIO_vSetPortDirection
  .text.MDIO_vSetPortValue
-                0x00001080       0x22 ./MCAL/DIO/DIO_prg.o
-                0x00001080                MDIO_vSetPortValue
+                0x0000109a       0x22 ./MCAL/DIO/DIO_prg.o
+                0x0000109a                MDIO_vSetPortValue
  .text.MDIO_u8GetPortValue
-                0x000010a2       0x24 ./MCAL/DIO/DIO_prg.o
-                0x000010a2                MDIO_u8GetPortValue
+                0x000010bc       0x24 ./MCAL/DIO/DIO_prg.o
+                0x000010bc                MDIO_u8GetPortValue
  .text.HSTEPPER_vMoveSpecificAngle
-                0x000010c6      0x11a ./HAL/STEPPER/STEPPER_prg.o
-                0x000010c6                HSTEPPER_vMoveSpecificAngle
+                0x000010e0      0x11a ./HAL/STEPPER/STEPPER_prg.o
+                0x000010e0                HSTEPPER_vMoveSpecificAngle
  .text.HSTEPPER_vMove
-                0x000011e0       0xc6 ./HAL/STEPPER/STEPPER_prg.o
-                0x000011e0                HSTEPPER_vMove
+                0x000011fa       0xc6 ./HAL/STEPPER/STEPPER_prg.o
+                0x000011fa                HSTEPPER_vMove
  .text.HSTEPPER_vInit
-                0x000012a6       0x2a ./HAL/STEPPER/STEPPER_prg.o
-                0x000012a6                HSTEPPER_vInit
+                0x000012c0       0x2a ./HAL/STEPPER/STEPPER_prg.o
+                0x000012c0                HSTEPPER_vInit
  .text.HSSD_DisplayNumber
-                0x000012d0       0x2c ./HAL/SEVEN_SEG/SEVEN_SEG_prg.o
-                0x000012d0                HSSD_DisplayNumber
+                0x000012ea       0x2c ./HAL/SEVEN_SEG/SEVEN_SEG_prg.o
+                0x000012ea                HSSD_DisplayNumber
  .text.HSSD_vInit
-                0x000012fc        0xa ./HAL/SEVEN_SEG/SEVEN_SEG_prg.o
-                0x000012fc                HSSD_vInit
+                0x00001316        0xa ./HAL/SEVEN_SEG/SEVEN_SEG_prg.o
+                0x00001316                HSSD_vInit
  .text.HLCD_vSendChar
-                0x00001306       0x40 ./HAL/LCD/LCD_prg.o
-                0x00001306                HLCD_vSendChar
+                0x00001320       0x40 ./HAL/LCD/LCD_prg.o
+                0x00001320                HLCD_vSendChar
  .text.HLCD_vSendNumber
-                0x00001346       0x8c ./HAL/LCD/LCD_prg.o
-                0x00001346                HLCD_vSendNumber
+                0x00001360       0x8c ./HAL/LCD/LCD_prg.o
+                0x00001360                HLCD_vSendNumber
  .text.HLCD_vSendString
-                0x000013d2       0x26 ./HAL/LCD/LCD_prg.o
-                0x000013d2                HLCD_vSendString
+                0x000013ec       0x26 ./HAL/LCD/LCD_prg.o
+                0x000013ec                HLCD_vSendString
  .text.HLCD_vSendCommand
-                0x000013f8       0x40 ./HAL/LCD/LCD_prg.o
-                0x000013f8                HLCD_vSendCommand
+                0x00001412       0x40 ./HAL/LCD/LCD_prg.o
+                0x00001412                HLCD_vSendCommand
  .text.HLCD_vSetCursor
-                0x00001438       0x16 ./HAL/LCD/LCD_prg.o
-                0x00001438                HLCD_vSetCursor
+                0x00001452       0x16 ./HAL/LCD/LCD_prg.o
+                0x00001452                HLCD_vSetCursor
  .text.HLCD_vSendSpecialCharecter
-                0x0000144e       0x58 ./HAL/LCD/LCD_prg.o
-                0x0000144e                HLCD_vSendSpecialCharecter
+                0x00001468       0x58 ./HAL/LCD/LCD_prg.o
+                0x00001468                HLCD_vSendSpecialCharecter
  .text.HLCD_vInit
-                0x000014a6       0x72 ./HAL/LCD/LCD_prg.o
-                0x000014a6                HLCD_vInit
+                0x000014c0       0x72 ./HAL/LCD/LCD_prg.o
+                0x000014c0                HLCD_vInit
  .text.HKEYPAD_u8GetChar
-                0x00001518       0xbc ./HAL/KEYPAD/KEYPAD_prg.o
-                0x00001518                HKEYPAD_u8GetChar
+                0x00001532       0xbc ./HAL/KEYPAD/KEYPAD_prg.o
+                0x00001532                HKEYPAD_u8GetChar
  .text.HKEYPAD_u8GetCharWait
-                0x000015d4        0xc ./HAL/KEYPAD/KEYPAD_prg.o
-                0x000015d4                HKEYPAD_u8GetCharWait
+                0x000015ee        0xc ./HAL/KEYPAD/KEYPAD_prg.o
+                0x000015ee                HKEYPAD_u8GetCharWait
  .text.HKEYPAD_vInit
-                0x000015e0       0xa2 ./HAL/KEYPAD/KEYPAD_prg.o
-                0x000015e0                HKEYPAD_vInit
- .text.ISR_APP  0x00001682       0x2e ./APP/main.o
-                0x00001682                ISR_APP
- .text.main     0x000016b0       0x44 ./APP/main.o
-                0x000016b0                main
- .text.libgcc   0x000016f4       0x28 d:/iti/tools/imt tools/sdk/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_udivmodhi4.o)
-                0x000016f4                __udivmodhi4
- .text.libgcc   0x0000171c        0x0 d:/iti/tools/imt tools/sdk/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_exit.o)
- .text.libgcc   0x0000171c        0x0 d:/iti/tools/imt tools/sdk/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_copy_data.o)
- .text.libgcc   0x0000171c        0x0 d:/iti/tools/imt tools/sdk/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_clear_bss.o)
- .text.libgcc   0x0000171c       0x38 d:/iti/tools/imt tools/sdk/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_prologue.o)
-                0x0000171c                __prologue_saves__
- .text.libgcc   0x00001754       0x36 d:/iti/tools/imt tools/sdk/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_epilogue.o)
-                0x00001754                __epilogue_restores__
-                0x0000178a                . = ALIGN (0x2)
+                0x000015fa       0xa2 ./HAL/KEYPAD/KEYPAD_prg.o
+                0x000015fa                HKEYPAD_vInit
+ .text.ISR_APP  0x0000169c       0x2e ./APP/main.o
+                0x0000169c                ISR_APP
+ .text.main     0x000016ca       0x32 ./APP/main.o
+                0x000016ca                main
+ .text.libgcc   0x000016fc       0x28 d:/iti/tools/imt tools/sdk/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_udivmodhi4.o)
+                0x000016fc                __udivmodhi4
+ .text.libgcc   0x00001724        0x0 d:/iti/tools/imt tools/sdk/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_exit.o)
+ .text.libgcc   0x00001724        0x0 d:/iti/tools/imt tools/sdk/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_copy_data.o)
+ .text.libgcc   0x00001724        0x0 d:/iti/tools/imt tools/sdk/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_clear_bss.o)
+ .text.libgcc   0x00001724       0x38 d:/iti/tools/imt tools/sdk/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_prologue.o)
+                0x00001724                __prologue_saves__
+ .text.libgcc   0x0000175c       0x36 d:/iti/tools/imt tools/sdk/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_epilogue.o)
+                0x0000175c                __epilogue_restores__
+                0x00001792                . = ALIGN (0x2)
  *(.fini9)
- .fini9         0x0000178a        0x0 d:/iti/tools/imt tools/sdk/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_exit.o)
-                0x0000178a                exit
-                0x0000178a                _exit
+ .fini9         0x00001792        0x0 d:/iti/tools/imt tools/sdk/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_exit.o)
+                0x00001792                exit
+                0x00001792                _exit
  *(.fini9)
  *(.fini8)
  *(.fini8)
@@ -392,17 +397,18 @@ LOAD d:/iti/tools/imt tools/sdk/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/a
  *(.fini1)
  *(.fini1)
  *(.fini0)
- .fini0         0x0000178a        0x4 d:/iti/tools/imt tools/sdk/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_exit.o)
+ .fini0         0x00001792        0x4 d:/iti/tools/imt tools/sdk/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_exit.o)
  *(.fini0)
-                0x0000178e                _etext = .
+                0x00001796                _etext = .
 
-.data           0x00800060      0x12a load address 0x0000178e
+.data           0x00800060      0x12a load address 0x00001796
                 0x00800060                PROVIDE (__data_start, .)
  *(.data)
  .data          0x00800060        0x0 d:/iti/tools/imt tools/sdk/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5/crtm32.o
+ .data          0x00800060        0x0 ./MCAL/GL_INTERRUPT/GLOBAL_INT_prg.o
  .data          0x00800060        0x0 ./MCAL/EXT_INTERRUPT/EXT_INT_prg.o
- .data          0x00800060        0x0 ./MCAL/EXT_INTERRUPT/GENERAL_INT_prg.o
  .data          0x00800060        0x0 ./MCAL/DIO/DIO_prg.o
+ .data          0x00800060        0x0 ./MCAL/ADC/ADC_prg.o
  .data          0x00800060        0x0 ./HAL/STEPPER/STEPPER_prg.o
  .data          0x00800060        0x0 ./HAL/SEVEN_SEG/SEVEN_SEG_prg.o
  .data          0x00800060        0x0 ./HAL/LCD/LCD_prg.o
@@ -448,9 +454,10 @@ LOAD d:/iti/tools/imt tools/sdk/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/a
                 0x0080018a                PROVIDE (__bss_start, .)
  *(.bss)
  .bss           0x0080018a        0x0 d:/iti/tools/imt tools/sdk/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5/crtm32.o
+ .bss           0x0080018a        0x0 ./MCAL/GL_INTERRUPT/GLOBAL_INT_prg.o
  .bss           0x0080018a        0x0 ./MCAL/EXT_INTERRUPT/EXT_INT_prg.o
- .bss           0x0080018a        0x0 ./MCAL/EXT_INTERRUPT/GENERAL_INT_prg.o
  .bss           0x0080018a        0x0 ./MCAL/DIO/DIO_prg.o
+ .bss           0x0080018a        0x0 ./MCAL/ADC/ADC_prg.o
  .bss           0x0080018a        0x0 ./HAL/STEPPER/STEPPER_prg.o
  .bss           0x0080018a        0x0 ./HAL/SEVEN_SEG/SEVEN_SEG_prg.o
  .bss           0x0080018a        0x0 ./HAL/LCD/LCD_prg.o
@@ -481,8 +488,8 @@ LOAD d:/iti/tools/imt tools/sdk/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/a
                 0x00800190                led_flag
  *(COMMON)
                 0x00800191                PROVIDE (__bss_end, .)
-                0x0000178e                __data_load_start = LOADADDR (.data)
-                0x000018b8                __data_load_end = (__data_load_start + SIZEOF (.data))
+                0x00001796                __data_load_start = LOADADDR (.data)
+                0x000018c0                __data_load_end = (__data_load_start + SIZEOF (.data))
 
 .noinit         0x00800191        0x0
                 0x00800191                PROVIDE (__noinit_start, .)

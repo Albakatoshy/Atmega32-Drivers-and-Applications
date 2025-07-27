@@ -13,6 +13,8 @@
 #include "../../LIB/STD_TYPES.h"
 #include "../../LIB/BIT_MATH.h"
 #include "EXT_INT_prv.h"
+#include "EXT_INT_cfg.h"
+#include"../GL_INTERRUPT/GLOBAL_INT_int.h"
 
 
 #define	EXT_INT_LOW_LEVEL_SENSTIVITY				0
@@ -36,5 +38,6 @@ typedef enum {
 void MEXT_INT_vEnableDisablePrepheral(u8 A_u8ExtIntx , u8 A_u8Mode );
 void MEXT_INT_vIntSenstivity(u8 A_u8ExtTIntx , u8 A_u8Senstivity);
 EXT_INT_STD_ERR MEXT_INT_InterruptHandler(u8 A_u8ExtTIntx , void (*LocalPtrInterruptHandler)(void));
+void MEXTI_vInit(void);
 
 #endif /* MCAL_EXT_INTERRUPT_EXT_INT_INT_H_ */
