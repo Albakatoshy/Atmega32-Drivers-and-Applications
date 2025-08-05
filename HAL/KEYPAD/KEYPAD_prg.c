@@ -5,7 +5,7 @@
  *      Author: anaal
  */
 #include "KEYPAD_int.h"
-#include "KEYPAD_cfg.h"
+
 
 void HKEYPAD_vInit() {
 
@@ -37,8 +37,12 @@ u8 HKEYPAD_u8GetChar() {
 
 	u8 Local_u8Button = RELEASED_BUTTON;
 	static u8 KPD_ARR[MAX_ROW_SIZE][MAX_COL_SIZE] =
-			{ { '1', '2', '3', '4' }, { '5', '6', '7', '8' }, { '9', '0', '*',
-					'=' }, { 'A', 'B', 'C', 'D' } };
+//			{ { '1', '2', '3', '4' }, { '5', '6', '7', '8' }, { '9', '0', '*',
+//					'=' }, { 'A', 'B', 'C', 'D' } };
+    {{ '7', '8', '9', '/' },    // Row A
+    { '4', '5', '6', '*' },    // Row B
+    { '1', '2', '3', '-' },    // Row C
+    { 'C', '0', '=', '+' }};
 	u8 Local_u8PinState;
 	static u8 Local_u8ColKeyPad[MAX_COL_SIZE] = { KEYPAD_C1, KEYPAD_C2,
 	KEYPAD_C3, KEYPAD_C4 };
@@ -74,8 +78,13 @@ u8 HKEYPAD_u8GetChar() {
 	return Local_u8Button;
 
 }
+
 u8 HKEYPAD_u8GetCharWait() {
-	u8 Local_u8Button = RELEASED_BUTTON;
-	while (HKEYPAD_u8GetChar() == 255);
+	u8 Local_u8Button;
+	do {
+		Local_u8Button = HKEYPAD_u8GetChar();
+		_delay_ms(10);  // prevent tight CPU lock
+	} while (Local_u8Button == RELEASED_BUTTON);
 	return Local_u8Button;
 }
+

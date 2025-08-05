@@ -215,21 +215,27 @@ void MEXTI_vInit(void){
 void __vector_1(void)  __attribute__((signal));
 void __vector_1(void)
 {
-	GlobalPtrInterruptHandler[0]();
+	if(GlobalPtrInterruptHandler[0]){
+		GlobalPtrInterruptHandler[0]();
+	}
 }
 
 
 void __vector_2(void)  __attribute__((signal));
 void __vector_2(void)
 {
-	GlobalPtrInterruptHandler[1]();
+	if(GlobalPtrInterruptHandler[1]){
+		GlobalPtrInterruptHandler[1]();
+	}
 }
 
 
 void __vector_3(void)  __attribute__((signal));
 void __vector_3(void)
 {
-	GlobalPtrInterruptHandler[2]();
+	if(GlobalPtrInterruptHandler[2]){
+		GlobalPtrInterruptHandler[2]();
+	}
 }
 
 

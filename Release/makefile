@@ -8,6 +8,12 @@ RM := rm -rf
 
 # All of the sources participating in the build are defined here
 -include sources.mk
+-include MCAL/WGT/subdir.mk
+-include MCAL/USART/subdir.mk
+-include MCAL/TIMER1/subdir.mk
+-include MCAL/TIMER0/subdir.mk
+-include MCAL/SPI/subdir.mk
+-include MCAL/I2C/subdir.mk
 -include MCAL/GL_INTERRUPT/subdir.mk
 -include MCAL/EXT_INTERRUPT/subdir.mk
 -include MCAL/DIO/subdir.mk
@@ -16,6 +22,7 @@ RM := rm -rf
 -include HAL/SEVEN_SEG/subdir.mk
 -include HAL/LCD/subdir.mk
 -include HAL/KEYPAD/subdir.mk
+-include HAL/EEPROM/subdir.mk
 -include APP/subdir.mk
 -include subdir.mk
 -include objects.mk
@@ -61,6 +68,7 @@ application.elf: $(OBJS) $(USER_OBJS)
 	avr-gcc -Wl,-Map,application.map -mmcu=atmega32 -o "application.elf" $(OBJS) $(USER_OBJS) $(LIBS)
 	@echo 'Finished building target: $@'
 	@echo ' '
+	$(MAKE) --no-print-directory post-build
 
 application.lss: application.elf
 	@echo 'Invoking: AVR Create Extended Listing'
@@ -91,9 +99,13 @@ clean:
 	-$(RM) $(FLASH_IMAGE)$(ELFS)$(OBJS)$(ASM_DEPS)$(EEPROM_IMAGE)$(S_DEPS)$(SIZEDUMMY)$(S_UPPER_DEPS)$(LSS)$(C_DEPS) application.elf
 	-@echo ' '
 
+post-build:
+	-avr-objcopy -O coff-avr application.elf application.cof
+	-@echo ' '
+
 secondary-outputs: $(LSS) $(FLASH_IMAGE) $(EEPROM_IMAGE) $(SIZEDUMMY)
 
 .PHONY: all clean dependents
-.SECONDARY:
+.SECONDARY: post-build
 
 -include ../makefile.targets

@@ -8,6 +8,7 @@
 #ifndef MCAL_DIO_DIO_INT_H_
 #define MCAL_DIO_DIO_INT_H_
 
+#include "DIO_prv.h"
 #include "../../LIB/STD_TYPES.h"
 
 #define DIO_PIN_DIRECTION_OUTPUT		1
@@ -44,7 +45,7 @@ void MDIO_vInit(void);
 void MDIO_vSetPinDirection(u8 A_u8PortNum , u8 A_u8PinNum , u8 A_u8PinDirection);
 void MDIO_vSetPinValue(u8 A_u8PortNum , u8 A_u8PinNum , u8 A_u8PinVal);
 u8   MDIO_u8GetPinValue(u8 A_u8PortNum , u8 A_u8PinNum);
-void MDIO_vTogglePin(u8 A_u8PortNum , u8 A_u8PinNum);
+void DIO_vTogglePin(u8 A_u8PortNum , u8 A_u8PinNum);
 
 
 

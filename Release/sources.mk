@@ -22,6 +22,7 @@ C_DEPS :=
 # Every subdirectory with source files must be described here
 SUBDIRS := \
 APP \
+HAL/EEPROM \
 HAL/KEYPAD \
 HAL/LCD \
 HAL/SEVEN_SEG \
@@ -30,4 +31,10 @@ MCAL/ADC \
 MCAL/DIO \
 MCAL/EXT_INTERRUPT \
 MCAL/GL_INTERRUPT \
+MCAL/I2C \
+MCAL/SPI \
+MCAL/TIMER0 \
+MCAL/TIMER1 \
+MCAL/USART \
+MCAL/WGT \
 

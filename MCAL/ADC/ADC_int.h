@@ -15,7 +15,7 @@
 
 
 void MADC_vInit(void);
-u16 MADC_u16AdcRead(A_u8Channel);
+u16 MADC_u16AdcRead(u8 A_u8Channel);
 
 
 #endif /* MCAL_ADC_ADC_INT_H_ */

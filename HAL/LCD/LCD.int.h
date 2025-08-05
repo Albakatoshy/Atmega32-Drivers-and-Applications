@@ -30,6 +30,10 @@
 #define LINE1_BASE  0x00
 #define LINE2_BASE  0x40
 
+#define LCD_8BIT_MODE		0
+#define LCD_4BIT_MODE		1
+
+#define LCD_MODE		LCD_4BIT_MODE
 
 void HLCD_vInit();
 void HLCD_vSendCommand(u8 A_u8Command);

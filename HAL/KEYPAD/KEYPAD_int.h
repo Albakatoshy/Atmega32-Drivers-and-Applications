@@ -13,6 +13,7 @@
 #include "../../LIB/BIT_MATH.h"
 #include <avr/delay.h>
 #include "../../MCAL/DIO/DIO_int.h"
+#include "KEYPAD_cfg.h"
 
 void HKEYPAD_vInit();
 u8 HKEYPAD_u8GetChar();

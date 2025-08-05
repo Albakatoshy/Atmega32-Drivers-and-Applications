@@ -4,15 +4,12 @@
 
 # Add inputs and outputs from these tool invocations to the build variables 
 C_SRCS += \
-../HAL/LCD/LCD_cfg.c \
 ../HAL/LCD/LCD_prg.c 
 
 OBJS += \
-./HAL/LCD/LCD_cfg.o \
 ./HAL/LCD/LCD_prg.o 
 
 C_DEPS += \
-./HAL/LCD/LCD_cfg.d \
 ./HAL/LCD/LCD_prg.d 
 
 
