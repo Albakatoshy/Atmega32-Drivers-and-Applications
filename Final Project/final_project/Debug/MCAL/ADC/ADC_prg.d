@@ -1,0 +1,23 @@
+MCAL/ADC/ADC_prg.o MCAL/ADC/ADC_prg.o: ../MCAL/ADC/ADC_prg.c \
+  ../MCAL/ADC/ADC_int.h ../MCAL/ADC/../../LIB/STD_TYPES.h \
+  ../MCAL/ADC/../../LIB/BIT_MATH.h \
+  ../MCAL/ADC/../GL_INTERRUPT/GLOBAL_INT_int.h \
+  ../MCAL/ADC/../GL_INTERRUPT/../../LIB/STD_TYPES.h \
+  ../MCAL/ADC/../GL_INTERRUPT/../../LIB/BIT_MATH.h \
+  ../MCAL/ADC/../GL_INTERRUPT/GLOBAL_INT_prv.h ../MCAL/ADC/ADC_prv.h
+
+../MCAL/ADC/ADC_int.h:
+
+../MCAL/ADC/../../LIB/STD_TYPES.h:
+
+../MCAL/ADC/../../LIB/BIT_MATH.h:
+
+../MCAL/ADC/../GL_INTERRUPT/GLOBAL_INT_int.h:
+
+../MCAL/ADC/../GL_INTERRUPT/../../LIB/STD_TYPES.h:
+
+../MCAL/ADC/../GL_INTERRUPT/../../LIB/BIT_MATH.h:
+
+../MCAL/ADC/../GL_INTERRUPT/GLOBAL_INT_prv.h:
+
+../MCAL/ADC/ADC_prv.h:

@@ -1,0 +1,22 @@
+HAL/STEPPER/STEPPER_prg.o HAL/STEPPER/STEPPER_prg.o:  \
+ ../HAL/STEPPER/STEPPER_prg.c ../HAL/STEPPER/STEPPER_int.h \
+  ../HAL/STEPPER/../../LIB/STD_TYPES.h \
+  ../HAL/STEPPER/../../LIB/BIT_MATH.h \
+  ../HAL/STEPPER/../../MCAL/DIO/DIO_int.h \
+  ../HAL/STEPPER/../../MCAL/DIO/DIO_prv.h \
+  ../HAL/STEPPER/../../MCAL/DIO/../../LIB/STD_TYPES.h \
+  ../HAL/STEPPER/STEPPER_cfg.h
+
+../HAL/STEPPER/STEPPER_int.h:
+
+../HAL/STEPPER/../../LIB/STD_TYPES.h:
+
+../HAL/STEPPER/../../LIB/BIT_MATH.h:
+
+../HAL/STEPPER/../../MCAL/DIO/DIO_int.h:
+
+../HAL/STEPPER/../../MCAL/DIO/DIO_prv.h:
+
+../HAL/STEPPER/../../MCAL/DIO/../../LIB/STD_TYPES.h:
+
+../HAL/STEPPER/STEPPER_cfg.h:

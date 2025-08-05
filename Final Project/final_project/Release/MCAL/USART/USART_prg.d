@@ -1,0 +1,14 @@
+MCAL/USART/USART_prg.o MCAL/USART/USART_prg.o: ../MCAL/USART/USART_prg.c \
+  ../MCAL/USART/USART_int.h ../MCAL/USART/../../LIB/STD_TYPES.h \
+  ../MCAL/USART/../../LIB/BIT_MATH.h ../MCAL/USART/USART_cfg.h \
+  ../MCAL/USART/USART_prv.h
+
+../MCAL/USART/USART_int.h:
+
+../MCAL/USART/../../LIB/STD_TYPES.h:
+
+../MCAL/USART/../../LIB/BIT_MATH.h:
+
+../MCAL/USART/USART_cfg.h:
+
+../MCAL/USART/USART_prv.h:

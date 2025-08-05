@@ -1,0 +1,21 @@
+HAL/SEVEN_SEG/SEVEN_SEG_prg.o HAL/SEVEN_SEG/SEVEN_SEG_prg.o:  \
+ ../HAL/SEVEN_SEG/SEVEN_SEG_prg.c ../HAL/SEVEN_SEG/../../LIB/STD_TYPES.h \
+  ../HAL/SEVEN_SEG/../../LIB/BIT_MATH.h \
+  ../HAL/SEVEN_SEG/../../MCAL/DIO/DIO_int.h \
+  ../HAL/SEVEN_SEG/../../MCAL/DIO/DIO_prv.h \
+  ../HAL/SEVEN_SEG/../../MCAL/DIO/../../LIB/STD_TYPES.h \
+  ../HAL/SEVEN_SEG/SEVEN_SEG_int.h ../HAL/SEVEN_SEG/SEVEN_SEG_config.h
+
+../HAL/SEVEN_SEG/../../LIB/STD_TYPES.h:
+
+../HAL/SEVEN_SEG/../../LIB/BIT_MATH.h:
+
+../HAL/SEVEN_SEG/../../MCAL/DIO/DIO_int.h:
+
+../HAL/SEVEN_SEG/../../MCAL/DIO/DIO_prv.h:
+
+../HAL/SEVEN_SEG/../../MCAL/DIO/../../LIB/STD_TYPES.h:
+
+../HAL/SEVEN_SEG/SEVEN_SEG_int.h:
+
+../HAL/SEVEN_SEG/SEVEN_SEG_config.h:

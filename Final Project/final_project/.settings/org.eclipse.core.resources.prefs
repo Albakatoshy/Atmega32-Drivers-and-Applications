@@ -1,0 +1,4 @@
+eclipse.preferences.version=1
+encoding//APP/main.c=UTF-8
+encoding//HAL/STEPPER/STEPPER_prg.c=UTF-8
+encoding//MCAL/TIMER0/TIMER0_prg.c=UTF-8
