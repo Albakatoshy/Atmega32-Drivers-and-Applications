@@ -44,7 +44,7 @@
 #define SERVO_MAX_ANGLE 180
 #define SERVO_STEP      20
 
-#define STEPPER_STEP_ANGLE  50
+#define STEPPER_STEP_ANGLE  35
 
 /* Function Prototypes */
 void SetServoAngle(u8 angle);
@@ -53,18 +53,7 @@ void DisplayMessage(const char* msg);
 /* Entry Point */
 int main(void)
 {
-    /* Initialize Peripherals */
-    HKEYPAD_vInit();
-    HLCD_vInit();
-    HSTEPPER_vInit();
-    MTIMER1_vInit();
-    MTIMER1_vStartTimer();
-    MINT_vGlobalIntEnableDisable(INT_GLOBAL_INTERRUPT_ENABLE);
 
-    /* Configure I/O Pins */
-    MDIO_vSetPinDirection(SERVO_PORT, SERVO_PIN, DIO_PIN_DIRECTION_OUTPUT);
-
-    /* Stepper Motor Instances */
     Stepper_t stepper1 = {
         .port = DIO_PORTA_INDEX,
         .pin1 = DIO_PIN0,
@@ -74,7 +63,8 @@ int main(void)
         .dir  = STEPPER_CW
     };
 
-    Stepper_t stepper3 = {
+
+    Stepper_t stepper2 = {
         .port = DIO_PORTD_INDEX,
         .pin1 = DIO_PIN0,
         .pin2 = DIO_PIN1,
@@ -83,11 +73,38 @@ int main(void)
         .dir  = STEPPER_CW
     };
 
+    Stepper_t stepper3 = {
+        .port = DIO_PORTA_INDEX,
+        .pin1 = DIO_PIN4,
+        .pin2 = DIO_PIN5,
+        .pin3 = DIO_PIN6,
+        .pin4 = DIO_PIN7,
+        .dir  = STEPPER_CW
+    };
+
+    /* Initialize Peripherals */
+    HKEYPAD_vInit();
+    HLCD_vInit();
+    HSTEPPER_vInit(&stepper1);
+    HSTEPPER_vInit(&stepper2);
+    HSTEPPER_vInit(&stepper3);
+    MTIMER1_vInit();
+    MTIMER1_vStartTimer();
+    MINT_vGlobalIntEnableDisable(INT_GLOBAL_INTERRUPT_ENABLE);
+
+    /* Configure I/O Pins */
+    MDIO_vSetPinDirection(SERVO_PORT, SERVO_PIN, DIO_PIN_DIRECTION_OUTPUT);
+
+    /* Stepper Motor Instances */
+
+
     /* Control Variables */
     u8 servo_angle = 90;
     u8 stepper1_angle = 0;
+    u8 stepper2_angle = 0;
     u8 stepper3_angle = 0;
     u8 key_pressed = 0;
+    u8 gripper_open = 1;
 
     SetServoAngle(servo_angle);
 
@@ -120,30 +137,30 @@ int main(void)
                 stepper3.dir = STEPPER_CCW;
                 stepper3_angle += STEPPER_STEP_ANGLE;
                 break;
-
-            case '5': // Servo Increase
-                if (servo_angle + SERVO_STEP <= SERVO_MAX_ANGLE)
-                {
-                    servo_angle += SERVO_STEP;
-                    DisplayMessage("Servo: +Angle");
-                }
-                else
-                {
-                    servo_angle = SERVO_MAX_ANGLE;
-                    DisplayMessage("Servo: Max Angle");
-                }
+            case '6': // Stepper 3 CW
+                DisplayMessage("Stepper2: C CW");
+                stepper2.dir = STEPPER_CCW;
+                stepper2_angle += STEPPER_STEP_ANGLE;
                 break;
 
-            case '6': // Servo Decrease
-                if (servo_angle >= SERVO_STEP)
+            case '7': // Stepper 3 CCW
+                DisplayMessage("Stepper2: CW");
+                stepper2.dir = STEPPER_CW;
+                stepper2_angle += STEPPER_STEP_ANGLE;
+                break;
+
+            case '5': // Toggle gripper
+                if (gripper_open)
                 {
-                    servo_angle -= SERVO_STEP;
-                    DisplayMessage("Servo: -Angle");
+                    SetServoAngle(180); // Close gripper
+                    gripper_open = 0;
+                    DisplayMessage("Gripper Closed");
                 }
                 else
                 {
-                    servo_angle = SERVO_MIN_ANGLE;
-                    DisplayMessage("Servo: Min Angle");
+                    SetServoAngle(0); // Open gripper
+                    gripper_open = 1;
+                    DisplayMessage("Gripper Open");
                 }
                 break;
 
@@ -165,6 +182,12 @@ int main(void)
             stepper3_angle = 0;
         }
 
+        if (stepper2_angle > 0)
+        {
+            HSTEPPER_vMoveSpecificAngle(&stepper2, stepper2_angle);
+            stepper2_angle = 0;
+        }
+
         SetServoAngle(servo_angle);
         _delay_ms(100);  // Optional delay for debounce or visibility
     }
@@ -175,10 +198,8 @@ int main(void)
 /* Sets the PWM value for the servo motor based on angle (0–180°) */
 void SetServoAngle(u8 angle)
 {
-    if (angle > SERVO_MAX_ANGLE) angle = SERVO_MAX_ANGLE;
-    if (angle < SERVO_MIN_ANGLE) angle = SERVO_MIN_ANGLE;
-
-    OCR1A = ((125UL * angle) / 180) + 125; // Maps 0°–180° to 1ms–2ms PWM
+    if (angle > 180) angle = 90;
+    OCR1A = ((1000UL * angle) / 180) + 1000;
 }
 
 /* Displays a short message on the LCD */

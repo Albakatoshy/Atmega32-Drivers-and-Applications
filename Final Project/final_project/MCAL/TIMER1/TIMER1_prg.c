@@ -17,30 +17,33 @@ void (*G_Timer1_ICU_Interrupt_Handler)(void) = NULL;
 
 void MTIMER1_vInit()
 {
-    // --- Waveform Generation Mode: Fast PWM (Mode 14: WGM13:0 = 1110) ---
+    // --- Waveform Generation Mode: Fast PWM, Mode 14 (WGM13:0 = 1110) ---
     CLEAR_BIT(TCCR1A, 0); // WGM10 = 0
     SET_BIT(TCCR1A, 1);   // WGM11 = 1
     SET_BIT(TCCR1B, 3);   // WGM12 = 1
     SET_BIT(TCCR1B, 4);   // WGM13 = 1
 
-    // --- Compare Output Mode: Non-Inverted PWM on OC1A and OC1B ---
-    CLEAR_BIT(TCCR1A, 6); // COM1A1 = 1 (non-inverting OC1A)
-    SET_BIT(TCCR1A, 7);   // COM1A0 = 0
+    // --- Compare Output Mode: Non-inverting PWM on OC1A ---
+    SET_BIT(TCCR1A, 7);   // COM1A1 = 1 (non-inverting mode)
+    CLEAR_BIT(TCCR1A, 6); // COM1A0 = 0
 
+    // (Optional) If you want OC1B as well, do the same:
+    SET_BIT(TCCR1A, 5);   // COM1B1 = 1
     CLEAR_BIT(TCCR1A, 4); // COM1B0 = 0
-    SET_BIT(TCCR1A, 5);   // COM1B1 = 1 (non-inverting OC1B)
 
-    // --- Set TOP value for 20ms period (50Hz) ---
+    // --- Set TOP for 20 ms period (50 Hz) ---
+    // For F_CPU = 8 MHz, prescaler = 8 → tick = 1 µs
+    // 20 ms period → 20000 ticks
     ICR1 = 20000;
 
-    // --- Prescaler = 8 (CS11 = 1) ---
+    // --- Prescaler = 8 ---
     CLEAR_BIT(TCCR1B, 0); // CS10 = 0
     SET_BIT(TCCR1B, 1);   // CS11 = 1
     CLEAR_BIT(TCCR1B, 2); // CS12 = 0
 
-    // --- Set output pins as output ---
-    MDIO_vSetPinDirection(DIO_PORTD_INDEX, DIO_PIN5, DIO_PIN_DIRECTION_OUTPUT); // OC1A (PD5)
-    MDIO_vSetPinDirection(DIO_PORTD_INDEX, DIO_PIN4, DIO_PIN_DIRECTION_OUTPUT); // OC1B (PD4)
+    // --- OC1A = PD5, OC1B = PD4 ---
+    MDIO_vSetPinDirection(DIO_PORTD_INDEX, DIO_PIN5, DIO_PIN_DIRECTION_OUTPUT); // OC1A
+    MDIO_vSetPinDirection(DIO_PORTD_INDEX, DIO_PIN4, DIO_PIN_DIRECTION_OUTPUT); // OC1B
 }
 void MTIMER1_vSetCompareMatch(u16 A_OCRR_VAL)
 {
